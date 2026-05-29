@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Study Groups - CampusVerse</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body>
+  <!-- Theme Toggle -->
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+    <i class="fas fa-sun"></i>
+  </button>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <h2>CampusVerse</h2>
+    </div>
+    <div class="nav-search">
+      <input type="search" placeholder="Search CampusVerse..." class="glass-input" />
+    </div>
+    <div class="nav-links">
+      <a href="#" class="nav-link"><i class="fas fa-bell"></i></a>
+      <a href="#" class="nav-link"><i class="fas fa-user"></i></a>
+    </div>
+  </nav>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <a href="dashboard.html" class="sidebar-item">
+      <i class="fas fa-tachometer-alt"></i> Dashboard
+    </a>
+    <a href="library.html" class="sidebar-item">
+      <i class="fas fa-book"></i> Library
+    </a>
+    <a href="marketplace.html" class="sidebar-item">
+      <i class="fas fa-shopping-cart"></i> Marketplace
+    </a>
+    <a href="events.html" class="sidebar-item">
+      <i class="fas fa-calendar-alt"></i> Events
+    </a>
+    <a href="groups.html" class="sidebar-item active">
+      <i class="fas fa-users"></i> Study Groups
+    </a>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <h1>Study Groups</h1>
+    <div class="chat-container" data-animate>
+      <!-- Groups List Sidebar -->
+      <div class="chat-sidebar">
+        <h3>B.Tech Study Groups</h3>
+        <div class="group-categories">
+          <div class="category-section">
+            <h4><i class="fas fa-code"></i> Programming</h4>
+            <ul class="group-list">
+              <li class="group-item active" data-group="data-structures">
+                <i class="fas fa-sitemap"></i>
+                <span>Data Structures & Algorithms</span>
+                <span class="member-count">24 members</span>
+              </li>
+              <li class="group-item" data-group="machine-learning">
+                <i class="fas fa-brain"></i>
+                <span>Machine Learning</span>
+                <span class="member-count">18 members</span>
+              </li>
+              <li class="group-item" data-group="web-development">
+                <i class="fas fa-globe"></i>
+                <span>Web Development</span>
+                <span class="member-count">32 members</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="category-section">
+            <h4><i class="fas fa-database"></i> Core Subjects</h4>
+            <ul class="group-list">
+              <li class="group-item" data-group="database-management">
+                <i class="fas fa-database"></i>
+                <span>Database Management</span>
+                <span class="member-count">20 members</span>
+              </li>
+              <li class="group-item" data-group="computer-networks">
+                <i class="fas fa-network-wired"></i>
+                <span>Computer Networks</span>
+                <span class="member-count">15 members</span>
+              </li>
+              <li class="group-item" data-group="software-engineering">
+                <i class="fas fa-cube"></i>
+                <span>Software Engineering</span>
+                <span class="member-count">22 members</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="category-section">
+            <h4><i class="fas fa-shield-alt"></i> Specializations</h4>
+            <ul class="group-list">
+              <li class="group-item" data-group="cybersecurity">
+                <i class="fas fa-shield-alt"></i>
+                <span>Cybersecurity</span>
+                <span class="member-count">12 members</span>
+              </li>
+              <li class="group-item" data-group="cloud-computing">
+                <i class="fas fa-cloud"></i>
+                <span>Cloud Computing</span>
+                <span class="member-count">16 members</span>
+              </li>
+              <li class="group-item" data-group="blockchain">
+                <i class="fas fa-lock"></i>
+                <span>Blockchain Technology</span>
+                <span class="member-count">8 members</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="create-group-section">
+          <button class="create-group-btn" onclick="showCreateGroupModal()">
+            <i class="fas fa-plus"></i>
+            Create New Group
+          </button>
+        </div>
+      </div>
+
+      <!-- Chat Window -->
+      <div class="chat-window" id="chat-window">
+        <!-- Messages will be loaded here by chat.js -->
+      </div>
+
+      <!-- Online Users & Shared Files -->
+      <div class="chat-sidebar">
+        <div class="online-users-section">
+          <h3><i class="fas fa-users"></i> Online Members</h3>
+          <div id="online-users">
+            <div class="user-presence">
+              <div class="presence-indicator"></div>
+              <div class="user-info">
+                <span class="user-name">Sivareddy</span>
+                <span class="user-status">You</span>
+              </div>
+            </div>
+            <div class="user-presence">
+              <div class="presence-indicator"></div>
+              <div class="user-info">
+                <span class="user-name">Alex Chen</span>
+                <span class="user-status">Typing...</span>
+              </div>
+            </div>
+            <div class="user-presence">
+              <div class="presence-indicator"></div>
+              <div class="user-info">
+                <span class="user-name">Sarah Wilson</span>
+                <span class="user-status">Online</span>
+              </div>
+            </div>
+            <div class="user-presence">
+              <div class="presence-indicator offline"></div>
+              <div class="user-info">
+                <span class="user-name">Mike Johnson</span>
+                <span class="user-status">Last seen 2h ago</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="shared-files-section">
+          <h3><i class="fas fa-folder-open"></i> Shared Resources</h3>
+          <div class="file-categories">
+            <div class="file-category">
+              <h5><i class="fas fa-code"></i> Code Files</h5>
+              <ul class="shared-files">
+                <li><a href="#" onclick="chatSystem.downloadFile('binary-tree')"><i class="fas fa-file-code"></i> BinaryTree.java</a></li>
+                <li><a href="#" onclick="chatSystem.downloadFile('sorting-algorithms')"><i class="fas fa-file-code"></i> SortingAlgorithms.py</a></li>
+              </ul>
+            </div>
+            <div class="file-category">
+              <h5><i class="fas fa-book"></i> Study Materials</h5>
+              <ul class="shared-files">
+                <li><a href="#" onclick="chatSystem.downloadFile('ds-notes')"><i class="fas fa-file-pdf"></i> DS & Algo Notes.pdf</a></li>
+                <li><a href="#" onclick="chatSystem.downloadFile('ml-formulas')"><i class="fas fa-file-word"></i> ML Formulas.docx</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="group-actions">
+          <button class="action-btn" onclick="showGroupSettings()">
+            <i class="fas fa-cog"></i>
+            Group Settings
+          </button>
+          <button class="action-btn" onclick="inviteMembers()">
+            <i class="fas fa-user-plus"></i>
+            Invite Members
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Message Input -->
+    <div class="chat-input-container">
+      <div class="input-group">
+        <input type="text" id="message-input" class="glass-input" placeholder="Type your message..." />
+        <input type="file" id="file-input" class="file-input" accept=".pdf,.doc,.docx,.txt,.jpg,.png" />
+        <button class="file-btn" onclick="document.getElementById('file-input').click()" title="Attach file">
+          <i class="fas fa-paperclip"></i>
+        </button>
+      </div>
+      <button class="neon-btn" onclick="chatSystem.sendMessage()">
+        <i class="fas fa-paper-plane"></i>
+      </button>
+    </div>
+  </main>
+
+  <!-- Create Group Modal -->
+  <div id="create-group-modal" class="modal" style="display: none;">
+    <div class="modal-content glass-card">
+      <div class="modal-header">
+        <h2><i class="fas fa-plus"></i> Create New Study Group</h2>
+        <button class="close-modal" onclick="closeModal('create-group-modal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="create-group-form">
+          <div class="form-group">
+            <label for="group-name">Group Name</label>
+            <input type="text" id="group-name" class="glass-input" placeholder="Enter group name" required>
+          </div>
+          <div class="form-group">
+            <label for="group-subject">Subject</label>
+            <select id="group-subject" class="glass-input" required>
+              <option value="">Select Subject</option>
+              <option value="data-structures">Data Structures & Algorithms</option>
+              <option value="machine-learning">Machine Learning</option>
+              <option value="web-development">Web Development</option>
+              <option value="database-management">Database Management</option>
+              <option value="computer-networks">Computer Networks</option>
+              <option value="software-engineering">Software Engineering</option>
+              <option value="cybersecurity">Cybersecurity</option>
+              <option value="cloud-computing">Cloud Computing</option>
+              <option value="blockchain">Blockchain Technology</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="group-description">Description</label>
+            <textarea id="group-description" class="glass-input" placeholder="Describe your study group" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="group-privacy">Privacy</label>
+            <select id="group-privacy" class="glass-input">
+              <option value="public">Public - Anyone can join</option>
+              <option value="private">Private - Invite only</option>
+            </select>
+          </div>
+          <div class="form-actions">
+            <button type="button" class="neon-btn secondary" onclick="closeModal('create-group-modal')">Cancel</button>
+            <button type="submit" class="neon-btn">Create Group</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Group Settings Modal -->
+  <div id="group-settings-modal" class="modal" style="display: none;">
+    <div class="modal-content glass-card">
+      <div class="modal-header">
+        <h2><i class="fas fa-cog"></i> Group Settings</h2>
+        <button class="close-modal" onclick="closeModal('group-settings-modal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="settings-section">
+          <h4>Group Information</h4>
+          <div class="form-group">
+            <label>Group Name</label>
+            <input type="text" class="glass-input" value="Data Structures & Algorithms" readonly>
+          </div>
+          <div class="form-group">
+            <label>Description</label>
+            <textarea class="glass-input" rows="3" readonly>Study group for Data Structures and Algorithms. Share resources, discuss problems, and prepare for interviews together.</textarea>
+          </div>
+        </div>
+        
+        <div class="settings-section">
+          <h4>Notifications</h4>
+          <div class="setting-item">
+            <label class="toggle-label">
+              <input type="checkbox" checked>
+              <span class="toggle-slider"></span>
+              New messages
+            </label>
+          </div>
+          <div class="setting-item">
+            <label class="toggle-label">
+              <input type="checkbox" checked>
+              <span class="toggle-slider"></span>
+              File uploads
+            </label>
+          </div>
+          <div class="setting-item">
+            <label class="toggle-label">
+              <input type="checkbox">
+              <span class="toggle-slider"></span>
+              Member joins/leaves
+            </label>
+          </div>
+        </div>
+        
+        <div class="settings-section">
+          <h4>Danger Zone</h4>
+          <button class="danger-btn" onclick="leaveGroup()">
+            <i class="fas fa-sign-out-alt"></i>
+            Leave Group
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Invite Members Modal -->
+  <div id="invite-members-modal" class="modal" style="display: none;">
+    <div class="modal-content glass-card">
+      <div class="modal-header">
+        <h2><i class="fas fa-user-plus"></i> Invite Members</h2>
+        <button class="close-modal" onclick="closeModal('invite-members-modal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="invite-methods">
+          <div class="invite-method">
+            <h4><i class="fas fa-link"></i> Share Invite Link</h4>
+            <div class="invite-link-container">
+              <input type="text" class="glass-input" value="https://campusverse.com/groups/invite/ds-algo-2025" readonly>
+              <button class="copy-btn" onclick="copyInviteLink()">
+                <i class="fas fa-copy"></i>
+              </button>
+            </div>
+          </div>
+          
+          <div class="invite-method">
+            <h4><i class="fas fa-search"></i> Search Students</h4>
+            <div class="search-container">
+              <input type="text" class="glass-input" placeholder="Search by name or roll number" id="member-search">
+              <button class="search-btn" onclick="searchMembers()">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+            <div class="search-results" id="search-results">
+              <!-- Search results will be populated here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/chat.js"></script>
+  <script>
+    // Group management functionality
+    function showCreateGroupModal() {
+      const modal = document.getElementById('create-group-modal');
+      if (modal) {
+        modal.style.display = 'flex';
+      }
+    }
+
+    function showGroupSettings() {
+      const modal = document.getElementById('group-settings-modal');
+      if (modal) {
+        modal.style.display = 'flex';
+      }
+    }
+
+    function inviteMembers() {
+      const modal = document.getElementById('invite-members-modal');
+      if (modal) {
+        modal.style.display = 'flex';
+      }
+    }
+
+    function closeModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.style.display = 'none';
+      }
+    }
+
+    function copyInviteLink() {
+      const linkInput = document.querySelector('.invite-link-container input');
+      linkInput.select();
+      document.execCommand('copy');
+      
+      // Show notification
+      if (window.showNotification) {
+        window.showNotification('Invite link copied to clipboard!', 'success');
+      }
+    }
+
+    function searchMembers() {
+      const searchTerm = document.getElementById('member-search').value;
+      const resultsContainer = document.getElementById('search-results');
+      
+      if (searchTerm.length < 2) {
+        resultsContainer.innerHTML = '';
+        return;
+      }
+      
+      // Simulate search results
+      const mockResults = [
+        { name: 'Alex Chen', roll: '123456', course: 'CSE' },
+        { name: 'Sarah Wilson', roll: '123457', course: 'CSE' },
+        { name: 'Mike Johnson', roll: '123458', course: 'IT' }
+      ].filter(student => 
+        student.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        student.roll.includes(searchTerm)
+      );
+      
+      resultsContainer.innerHTML = mockResults.map(student => `
+        <div class="search-result-item">
+          <div class="student-info">
+            <span class="student-name">${student.name}</span>
+            <span class="student-details">${student.roll} • ${student.course}</span>
+          </div>
+          <button class="invite-btn" onclick="sendInvite('${student.name}', '${student.roll}')">
+            <i class="fas fa-user-plus"></i>
+            Invite
+          </button>
+        </div>
+      `).join('');
+    }
+
+    function sendInvite(name, roll) {
+      if (window.showNotification) {
+        window.showNotification(`Invitation sent to ${name}!`, 'success');
+      }
+    }
+
+    function leaveGroup() {
+      if (confirm('Are you sure you want to leave this group?')) {
+        if (window.showNotification) {
+          window.showNotification('You have left the group', 'info');
+        }
+        closeModal('group-settings-modal');
+      }
+    }
+
+    // Group switching functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const groupItems = document.querySelectorAll('.group-item');
+      
+      groupItems.forEach(item => {
+        item.addEventListener('click', () => {
+          // Remove active class from all items
+          groupItems.forEach(gi => gi.classList.remove('active'));
+          // Add active class to clicked item
+          item.classList.add('active');
+          
+          // Update chat window with group-specific content
+          const groupName = item.querySelector('span').textContent;
+          updateChatForGroup(groupName);
+        });
+      });
+    });
+
+    function updateChatForGroup(groupName) {
+      const chatWindow = document.getElementById('chat-window');
+      
+      // Simulate loading group-specific messages
+      const groupMessages = {
+        'Data Structures & Algorithms': [
+          { sender: 'Alex Chen', message: 'Hey everyone! Can someone help me with binary tree traversal?', time: '2:30 PM' },
+          { sender: 'Sarah Wilson', message: 'Sure! I have some great resources. Let me share them.', time: '2:32 PM' },
+          { sender: 'You', message: 'Thanks Sarah! Those notes are really helpful.', time: '2:35 PM' }
+        ],
+        'Machine Learning': [
+          { sender: 'Mike Johnson', message: 'Anyone working on the ML project?', time: '1:45 PM' },
+          { sender: 'Alex Chen', message: 'Yes! I\'m using TensorFlow for the neural network.', time: '1:47 PM' }
+        ]
+      };
+      
+      const messages = groupMessages[groupName] || [
+        { sender: 'System', message: `Welcome to ${groupName}! Start the conversation.`, time: 'Now' }
+      ];
+      
+      chatWindow.innerHTML = messages.map(msg => `
+        <div class="message ${msg.sender === 'You' ? 'sent' : 'received'}">
+          <div class="message-content">
+            <strong>${msg.sender}:</strong> ${msg.message}
+          </div>
+          <div class="message-time">${msg.time}</div>
+        </div>
+      `).join('');
+    }
+
+    // Close modals when clicking outside
+    window.addEventListener('click', (e) => {
+      if (e.target.classList.contains('modal')) {
+        e.target.style.display = 'none';
+      }
+    });
+
+    // Form submission
+    document.getElementById('create-group-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const groupName = document.getElementById('group-name').value;
+      const subject = document.getElementById('group-subject').value;
+      
+      if (window.showNotification) {
+        window.showNotification(`Group "${groupName}" created successfully!`, 'success');
+      }
+      
+      closeModal('create-group-modal');
+    });
+  </script>
+
+  <style>
+    .group-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .group-categories {
+      margin-bottom: 20px;
+    }
+
+    .category-section {
+      margin-bottom: 25px;
+    }
+
+    .category-section h4 {
+      color: var(--neon-cyan);
+      margin-bottom: 15px;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .group-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 15px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-bottom: 8px;
+      background: var(--bg-glass);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .group-item i {
+      font-size: 1.2rem;
+      color: var(--neon-cyan);
+      min-width: 20px;
+    }
+
+    .group-item span:first-of-type {
+      flex: 1;
+      font-weight: 500;
+    }
+
+    .member-count {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      background: var(--bg-secondary);
+      padding: 2px 8px;
+      border-radius: 12px;
+    }
+
+    .group-item.active,
+    .group-item:hover {
+      background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+      color: white;
+      box-shadow: var(--shadow-neon);
+      transform: translateX(5px);
+    }
+
+    .group-item.active i,
+    .group-item:hover i {
+      color: white;
+    }
+
+    .group-item.active .member-count,
+    .group-item:hover .member-count {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+    }
+
+    .create-group-section {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-glass);
+    }
+
+    .create-group-btn {
+      width: 100%;
+      background: linear-gradient(45deg, var(--neon-green), var(--neon-cyan));
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-weight: 600;
+    }
+
+    .create-group-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(0, 255, 127, 0.3);
+    }
+
+    .group-actions {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .action-btn {
+      background: var(--bg-glass);
+      border: 1px solid var(--border-glass);
+      color: var(--text-primary);
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+    }
+
+    .action-btn:hover {
+      background: var(--bg-glass-hover);
+      box-shadow: var(--shadow-neon);
+    }
+
+    .user-info {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .user-name {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .user-status {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    .file-categories {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .file-category h5 {
+      color: var(--neon-cyan);
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      max-width: 600px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 0;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      border-bottom: 1px solid var(--border-glass);
+    }
+
+    .modal-header h2 {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .close-modal {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text-secondary);
+      cursor: pointer;
+      padding: 5px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+
+    .close-modal:hover {
+      color: var(--accent-red);
+      background: rgba(255, 107, 107, 0.1);
+    }
+
+    .modal-body {
+      padding: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      margin-top: 30px;
+    }
+
+    .settings-section {
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border-glass);
+    }
+
+    .settings-section:last-child {
+      border-bottom: none;
+    }
+
+    .settings-section h4 {
+      margin-bottom: 15px;
+      color: var(--neon-cyan);
+    }
+
+    .setting-item {
+      margin-bottom: 15px;
+    }
+
+    .toggle-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .toggle-slider {
+      position: relative;
+      width: 40px;
+      height: 20px;
+      background: var(--bg-secondary);
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .toggle-slider::before {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background: white;
+      border-radius: 50%;
+      top: 2px;
+      left: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .toggle-label input[type="checkbox"] {
+      display: none;
+    }
+
+    .toggle-label input[type="checkbox"]:checked + .toggle-slider {
+      background: var(--neon-cyan);
+    }
+
+    .toggle-label input[type="checkbox"]:checked + .toggle-slider::before {
+      transform: translateX(20px);
+    }
+
+    .danger-btn {
+      background: var(--accent-red);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .danger-btn:hover {
+      background: #e74c3c;
+      transform: translateY(-2px);
+    }
+
+    .invite-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .invite-method h4 {
+      color: var(--neon-cyan);
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .invite-link-container {
+      display: flex;
+      gap: 10px;
+    }
+
+    .invite-link-container input {
+      flex: 1;
+    }
+
+    .copy-btn {
+      background: var(--neon-cyan);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .copy-btn:hover {
+      background: var(--neon-blue);
+    }
+
+    .search-container {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .search-container input {
+      flex: 1;
+    }
+
+    .search-btn {
+      background: var(--neon-blue);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .search-btn:hover {
+      background: var(--neon-purple);
+    }
+
+    .search-results {
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .search-result-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px;
+      background: var(--bg-secondary);
+      border-radius: 8px;
+      margin-bottom: 8px;
+    }
+
+    .student-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .student-name {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .student-details {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    .invite-btn {
+      background: var(--neon-green);
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.8rem;
+    }
+
+    .invite-btn:hover {
+      background: var(--neon-cyan);
+    }
+
+    .chat-input-container {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+      align-items: center;
+    }
+
+    .input-group {
+      display: flex;
+      flex: 1;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .chat-input-container input {
+      flex: 1;
+      font-size: 1rem;
+    }
+
+    .file-input {
+      display: none;
+    }
+
+    .file-btn {
+      background: var(--bg-glass);
+      border: 1px solid var(--border-glass);
+      border-radius: 10px;
+      padding: 12px;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .file-btn:hover {
+      background: var(--bg-glass-hover);
+      box-shadow: var(--shadow-neon);
+    }
+
+    .message {
+      background: var(--bg-glass);
+      padding: 15px 20px;
+      border-radius: 20px;
+      margin-bottom: 15px;
+      max-width: 70%;
+      animation: fadeIn 0.3s ease-out;
+      position: relative;
+    }
+
+    .message.sent {
+      margin-left: auto;
+      background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+      color: white;
+    }
+
+    .message.received {
+      background: var(--bg-glass);
+      color: var(--text-primary);
+    }
+
+    .message-time {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      margin-top: 5px;
+      text-align: right;
+    }
+
+    .message.sent .message-time {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .file-message {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .file-message i {
+      font-size: 2rem;
+      color: var(--neon-cyan);
+    }
+
+    .file-message .fa-file-pdf {
+      color: #ff6b6b;
+    }
+
+    .file-message .fa-file-word {
+      color: #4a90e2;
+    }
+
+    .file-message .fa-file-excel {
+      color: #27ae60;
+    }
+
+    .online-users-section, .shared-files-section {
+      margin-bottom: 30px;
+    }
+
+    .online-users-section h3, .shared-files-section h3 {
+      margin-bottom: 15px;
+      color: var(--neon-cyan);
+      font-size: 1.1rem;
+    }
+
+    .user-presence {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      background: var(--bg-glass);
+      border-radius: 10px;
+      margin-bottom: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .user-presence:hover {
+      background: var(--bg-glass-hover);
+    }
+
+    .presence-indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #27ae60;
+      box-shadow: 0 0 10px rgba(39, 174, 96, 0.5);
+    }
+
+    .presence-indicator.offline {
+      background: #95a5a6;
+      box-shadow: none;
+    }
+
+    .shared-files {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .shared-files li {
+      margin-bottom: 12px;
+    }
+
+    .shared-files a {
+      color: var(--neon-cyan);
+      text-decoration: none;
+      transition: color 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px;
+      border-radius: 8px;
+      background: var(--bg-glass);
+    }
+
+    .shared-files a:hover {
+      background: var(--bg-glass-hover);
+      text-decoration: underline;
+    }
+
+    .chat-sidebar {
+      width: 300px;
+      background: var(--bg-secondary);
+      padding: 20px;
+      border-right: 1px solid var(--border-glass);
+      overflow-y: auto;
+    }
+
+    .chat-sidebar:first-child {
+      border-right: 1px solid var(--border-glass);
+      border-left: none;
+    }
+
+    .chat-sidebar:last-child {
+      border-left: 1px solid var(--border-glass);
+    }
+
+    @media (max-width: 768px) {
+      .chat-container {
+        flex-direction: column;
+      }
+
+      .chat-sidebar {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border-glass);
+        margin-bottom: 20px;
+      }
+
+      .chat-window {
+        height: 300px;
+      }
+    }
+  </style>
+</body>
+</html>

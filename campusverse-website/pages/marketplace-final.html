@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marketplace - CampusVerse</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <!-- Theme Toggle -->
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+    <i class="fas fa-sun"></i>
+  </button>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <h2>CampusVerse</h2>
+    </div>
+    <div class="nav-search">
+      <input type="search" placeholder="Search CampusVerse..." class="glass-input">
+    </div>
+    <div class="nav-links">
+      <a href="#" class="nav-link"><i class="fas fa-bell"></i></a>
+      <a href="cart-final.html" class="nav-link cart-link">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-counter">0</span>
+      </a>
+      <a href="#" class="nav-link"><i class="fas fa-user"></i></a>
+    </div>
+  </nav>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <a href="dashboard.html" class="sidebar-item">
+      <i class="fas fa-tachometer-alt"></i> Dashboard
+    </a>
+    <a href="library.html" class="sidebar-item">
+      <i class="fas fa-book"></i> Library
+    </a>
+    <a href="marketplace-final.html" class="sidebar-item active">
+      <i class="fas fa-shopping-cart"></i> Marketplace
+    </a>
+    <a href="events.html" class="sidebar-item">
+      <i class="fas fa-calendar-alt"></i> Events
+    </a>
+    <a href="groups.html" class="sidebar-item">
+      <i class="fas fa-users"></i> Study Groups
+    </a>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="marketplace-header">
+      <h1>Campus Marketplace</h1>
+      <div class="filters">
+        <select class="glass-input">
+          <option>All Categories</option>
+          <option>Books</option>
+          <option>Gadgets</option>
+          <option>Lab Materials</option>
+          <option>Stationery</option>
+        </select>
+        <input type="search" placeholder="Search products..." class="glass-input" id="product-search">
+      </div>
+    </div>
+
+    <div class="products-grid grid grid-4" data-animate>
+      <!-- Book Products -->
+      <div class="glass-card product-card searchable-item" data-product-id="calculus-textbook">
+        <div class="product-image">
+          <i class="fas fa-book"></i>
+        </div>
+        <div class="product-info">
+          <h3>Calculus Textbook</h3>
+          <p class="price">$45.00</p>
+          <p class="seller">Sold by: Alex Johnson</p>
+          <button class="neon-btn add-to-cart-btn" data-product='{"id":"calculus-textbook","name":"Calculus Textbook","price":45.00,"seller":"Alex Johnson"}'>
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <div class="glass-card product-card searchable-item" data-product-id="physics-fundamentals">
+        <div class="product-image">
+          <i class="fas fa-book"></i>
+        </div>
+        <div class="product-info">
+          <h3>Physics Fundamentals</h3>
+          <p class="price">$38.50</p>
+          <p class="seller">Sold by: Maria Garcia</p>
+          <button class="neon-btn add-to-cart-btn" data-product='{"id":"physics-fundamentals","name":"Physics Fundamentals","price":38.50,"seller":"Maria Garcia"}'>
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <div class="glass-card product-card searchable-item" data-product-id="chemistry-lab-manual">
+        <div class="product-image">
+          <i class="fas fa-book"></i>
+        </div>
+        <div class="product-info">
+          <h3>Chemistry Lab Manual</h3>
+          <p class="price">$25.00</p>
+          <p class="seller">Sold by: David Chen</p>
+          <button class="neon-btn add-to-cart-btn" data-product='{"id":"chemistry-lab-manual","name":"Chemistry Lab Manual","price":25.00,"seller":"David Chen"}'>
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <!-- Gadget Products -->
+      <div class="glass-card product-card searchable-item" data-product-id="scientific-calculator">
+        <div class="product-image">
+          <i class="fas fa-laptop"></i>
+        </div>
+        <div class="product-info">
+          <h3>Scientific Calculator</h3>
+          <p class="price">$89.99</p>
+          <p class="seller">Sold by: Sarah Wilson</p>
+          <button class="neon-btn add-to-cart-btn" data-product='{"id":"scientific-calculator","name":"Scientific Calculator","price":89.99,"seller":"Sarah Wilson"}'>
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <div class="glass-card product-card searchable-item" data-product-id="noise-cancelling-headphones">
+        <div class="product-image">
+          <i class="fas fa-headphones"></i>
+        </div>
+        <div class="product-info">
+          <h3>Noise-Cancelling Headphones</h3>
+          <p class="price">$120.00</p>
+          <p class="seller">Sold by: Mike Brown</p>
+          <button class="neon-btn add-to-cart-btn" data-product='{"id":"noise-cancelling-headphones","name":"Noise-Cancelling Headphones","price":120.00,"seller":"Mike Brown"}'>
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <div class="glass-card product-card searchable-item" data-product-id="wireless-mouse">
+        <div class="product-image">
+          <i class="fas fa-mouse"></i>
+        </div>
+        <div class="product-info">
+          <h3>Wireless Mouse</h3>
+          <p class="price">$25.50</p>
+          <p class="seller">Sold by: Emma Davis</p>
+          <button class="neon-btn add-to-cart-btn" data-product='{"id":"wireless-mouse","name":"Wireless Mouse","price":25.50,"seller":"Emma Davis"}'>
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <!-- Lab Materials -->
+      <div class="glass-card product-card searchable-item" data-product-id="lab-coat">
+        <div class="product-image">
+          <i class="fas fa-flask"></i>
+        </div>
+        <div class="product-info">
+          <h3>Lab Coat</h3>
+          <p class="price">$35.00</p>
+          <p class="seller">Sold by: Robert Taylor</p>
+          <button class="neon-btn add-to-cart-btn" data-product='{"id":"lab-coat","name":"Lab Coat","price":35.00,"seller":"Robert Taylor"}'>
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <div class="glass-card product-card searchable-item" data-product-id="microscope-slides">
+        <div class="product-image">
+          <i class="fas fa-microscope"></i>
+        </div>
+        <div class="product-info">
+          <h3>Microscope Slides Set</h3>
+          <p class="price">$55.00</p>
+          <p class="seller">Sold by: Lisa Anderson</p>
+          <button class="neon-btn add-to-cart-btn" data-product='{"id":"microscope-slides","name":"Microscope Slides Set","price":55.00,"seller":"Lisa Anderson"}'>
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <div class="glass-card product-card searchable-item" data-product-id="drawing-compass">
+        <div class="product-image">
+          <i class="fas fa-ruler"></i>
+        </div>
+        <div class="product-info">
+          <h3>Drawing Compass Set</h3>
+          <p class="price">$15.99</p>
+          <p class="seller">Sold by: James Miller</p>
+          <button class="neon-btn add-to-cart-btn" data-product='{"id":"drawing-compass","name":"Drawing Compass Set","price":15.99,"seller":"James Miller"}'>
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <div class="glass-card product-card searchable-item" data-product-id="art-supplies">
+        <div class="product-image">
+          <i class="fas fa-palette"></i>
+        </div>
+        <div class="product-info">
+          <h3>Art Supplies Kit</h3>
+          <p class="price">$42.00</p>
+          <p class="seller">Sold by: Anna Martinez</p>
+          <button class="neon-btn add-to-cart-btn" data-product='{"id":"art-supplies","name":"Art Supplies Kit","price":42.00,"seller":"Anna Martinez"}'>
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/cart-final.js"></script>
+
+  <script>
+    // Marketplace specific functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize cart counter
+      if (window.cartSystem) {
+        cartSystem.updateCartCounter();
+        console.log('✅ Marketplace loaded with cart system');
+        console.log('📊 Current cart count:', cartSystem.cartCounter);
+      }
+
+      // Product search functionality
+      const searchInput = document.getElementById('product-search');
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          const searchTerm = e.target.value.toLowerCase();
+          document.querySelectorAll('.searchable-item').forEach(item => {
+            const productName = item.querySelector('h3').textContent.toLowerCase();
+            const sellerName = item.querySelector('.seller').textContent.toLowerCase();
+
+            if (productName.includes(searchTerm) || sellerName.includes(searchTerm)) {
+              item.style.display = 'block';
+            } else {
+              item.style.display = searchTerm ? 'none' : 'block';
+            }
+          });
+        });
+      }
+
+      // Category filter functionality
+      const categorySelect = document.querySelector('.filters select');
+      if (categorySelect) {
+        categorySelect.addEventListener('change', (e) => {
+          const selectedCategory = e.target.value.toLowerCase();
+          document.querySelectorAll('.searchable-item').forEach(item => {
+            const productName = item.querySelector('h3').textContent.toLowerCase();
+
+            if (selectedCategory === 'all categories') {
+              item.style.display = 'block';
+            } else if (productName.includes(selectedCategory)) {
+              item.style.display = 'block';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      }
+    });
+  </script>
+
+  <style>
+    .marketplace-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .filters {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .filters select, .filters input {
+      min-width: 200px;
+    }
+
+    .product-card {
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+    }
+
+    .product-image {
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-secondary);
+      font-size: 4rem;
+      color: var(--neon-blue);
+      margin-bottom: 15px;
+    }
+
+    .product-info {
+      text-align: center;
+    }
+
+    .product-info h3 {
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--neon-cyan);
+      margin-bottom: 5px;
+    }
+
+    .seller {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+
+    .product-info .neon-btn {
+      width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      .marketplace-header {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .filters {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .filters select, .filters input {
+        min-width: auto;
+      }
+
+      .grid-4 {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+
+      .product-image {
+        height: 120px;
+        font-size: 3rem;
+      }
+    }
+  </style>
+</body>
+</html>

@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart - CampusVerse</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <!-- Theme Toggle -->
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+    <i class="fas fa-sun"></i>
+  </button>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <h2>CampusVerse</h2>
+    </div>
+    <div class="nav-search">
+      <input type="search" placeholder="Search CampusVerse..." class="glass-input">
+    </div>
+    <div class="nav-links">
+      <a href="#" class="nav-link"><i class="fas fa-bell"></i></a>
+      <a href="cart-final.html" class="nav-link cart-link">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-counter">0</span>
+      </a>
+      <a href="#" class="nav-link"><i class="fas fa-user"></i></a>
+    </div>
+  </nav>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <a href="dashboard.html" class="sidebar-item">
+      <i class="fas fa-tachometer-alt"></i> Dashboard
+    </a>
+    <a href="library.html" class="sidebar-item">
+      <i class="fas fa-book"></i> Library
+    </a>
+    <a href="marketplace-final.html" class="sidebar-item">
+      <i class="fas fa-shopping-cart"></i> Marketplace
+    </a>
+    <a href="events.html" class="sidebar-item">
+      <i class="fas fa-calendar-alt"></i> Events
+    </a>
+    <a href="groups.html" class="sidebar-item">
+      <i class="fas fa-users"></i> Study Groups
+    </a>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="cart-header">
+      <h1>Shopping Cart</h1>
+      <button id="clear-cart" class="neon-btn secondary">Clear Cart</button>
+    </div>
+
+    <div class="cart-container">
+      <div id="cart-items" class="cart-items">
+        <!-- Cart items will be populated here -->
+      </div>
+
+      <div id="cart-summary" class="cart-summary glass-card">
+        <h3>Order Summary</h3>
+        <div class="summary-row">
+          <span>Subtotal:</span>
+          <span id="cart-subtotal">$0.00</span>
+        </div>
+        <div class="summary-row">
+          <span>Tax (8%):</span>
+          <span id="cart-tax">$0.00</span>
+        </div>
+        <div class="summary-row">
+          <span>Shipping:</span>
+          <span id="cart-shipping">$0.00</span>
+        </div>
+        <hr>
+        <div class="summary-row total">
+          <span>Total:</span>
+          <span id="cart-total">$0.00</span>
+        </div>
+        <button id="checkout-btn" class="neon-btn checkout-btn" disabled>
+          <i class="fas fa-credit-card"></i>
+          Proceed to Checkout
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Payment Modal -->
+  <div id="payment-modal" class="modal">
+    <div class="modal-content glass-card">
+      <div class="modal-header">
+        <h2>Payment Details</h2>
+        <button class="close-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="payment-methods">
+          <div class="payment-method active" data-method="card">
+            <i class="fas fa-credit-card"></i>
+            <span>Credit/Debit Card</span>
+          </div>
+          <div class="payment-method" data-method="paypal">
+            <i class="fab fa-paypal"></i>
+            <span>PayPal</span>
+          </div>
+          <div class="payment-method" data-method="apple">
+            <i class="fab fa-apple-pay"></i>
+            <span>Apple Pay</span>
+          </div>
+        </div>
+
+        <form id="payment-form">
+          <div class="form-group">
+            <label for="card-number">Card Number</label>
+            <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456" maxlength="19">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="expiry-date">Expiry Date</label>
+              <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY" maxlength="5">
+            </div>
+            <div class="form-group">
+              <label for="cvv">CVV</label>
+              <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="4">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="card-name">Cardholder Name</label>
+            <input type="text" id="card-name" name="card-name" placeholder="John Doe">
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="john@example.com">
+          </div>
+
+          <div class="order-review">
+            <h4>Order Review</h4>
+            <div id="order-items"></div>
+            <div class="order-total">
+              <strong>Total: <span id="payment-total">$0.00</span></strong>
+            </div>
+          </div>
+
+          <div class="payment-status" id="payment-status"></div>
+
+          <button type="submit" class="neon-btn" id="pay-btn">
+            <i class="fas fa-lock"></i>
+            Pay Now
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/cart-final.js"></script>
+
+  <style>
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .cart-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 30px;
+    }
+
+    .cart-items {
+      min-height: 400px;
+    }
+
+    .empty-cart {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-secondary);
+    }
+
+    .empty-cart h3 {
+      margin-bottom: 15px;
+      color: var(--text-primary);
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      margin-bottom: 15px;
+      background: var(--bg-secondary);
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .cart-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(0, 212, 255, 0.2);
+    }
+
+    .cart-item-image {
+      width: 60px;
+      height: 60px;
+      background: var(--bg-primary);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 20px;
+      font-size: 1.5rem;
+      color: var(--neon-blue);
+    }
+
+    .cart-item-info {
+      flex: 1;
+    }
+
+    .cart-item-info h4 {
+      margin-bottom: 5px;
+    }
+
+    .cart-item-seller {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 5px;
+    }
+
+    .cart-item-price {
+      color: var(--neon-cyan);
+      font-weight: bold;
+    }
+
+    .cart-item-controls {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+    }
+
+    .quantity-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .quantity-btn {
+      width: 30px;
+      height: 30px;
+      border: 1px solid var(--neon-blue);
+      background: transparent;
+      color: var(--neon-blue);
+      border-radius: 5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .quantity-btn:hover {
+      background: var(--neon-blue);
+      color: var(--bg-primary);
+    }
+
+    .quantity {
+      min-width: 30px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .cart-item-subtotal {
+      color: var(--neon-cyan);
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .remove-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      cursor: pointer;
+      padding: 5px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+
+    .remove-btn:hover {
+      color: var(--accent-red);
+      background: rgba(255, 107, 107, 0.1);
+    }
+
+    .cart-summary {
+      padding: 25px;
+      position: sticky;
+      top: 20px;
+      height: fit-content;
+    }
+
+    .cart-summary h3 {
+      margin-bottom: 20px;
+      color: var(--neon-cyan);
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .summary-row.total {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--neon-cyan);
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .checkout-btn {
+      width: 100%;
+      margin-top: 20px;
+      font-size: 1.1rem;
+      padding: 15px;
+    }
+
+    .checkout-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+    }
+
+    .modal.show {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      max-width: 500px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .close-modal {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text-secondary);
+      cursor: pointer;
+      padding: 5px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+
+    .close-modal:hover {
+      color: var(--accent-red);
+      background: rgba(255, 107, 107, 0.1);
+    }
+
+    .payment-methods {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .payment-method {
+      flex: 1;
+      padding: 15px;
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .payment-method.active {
+      border-color: var(--neon-blue);
+      background: rgba(0, 212, 255, 0.1);
+    }
+
+    .payment-method i {
+      font-size: 1.5rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--text-primary);
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 5px;
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      font-size: 1rem;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--neon-blue);
+      box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+    }
+
+    .order-review {
+      background: var(--bg-secondary);
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+
+    .order-review h4 {
+      margin-bottom: 10px;
+      color: var(--neon-cyan);
+    }
+
+    .order-total {
+      text-align: right;
+      margin-top: 10px;
+    }
+
+    .payment-status {
+      margin: 15px 0;
+      padding: 10px;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .payment-status.success {
+      background: rgba(46, 204, 113, 0.2);
+      color: var(--accent-green);
+      border: 1px solid var(--accent-green);
+    }
+
+    .payment-status.error {
+      background: rgba(231, 76, 60, 0.2);
+      color: var(--accent-red);
+      border: 1px solid var(--accent-red);
+    }
+
+    #pay-btn {
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .cart-container {
+        grid-template-columns: 1fr;
+      }
+
+      .cart-header {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .cart-item-controls {
+        align-items: flex-start;
+        width: 100%;
+        margin-top: 15px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .payment-methods {
+        flex-direction: column;
+      }
+    }
+  </style>
+</body>
+</html>
